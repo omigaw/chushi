@@ -37,7 +37,7 @@ CREATE TABLE `user` (
 
 #### 字段说明
 
-![1534388259115](C:\Users\xuym3\AppData\Local\Temp\1534388259115.png)
+![1534388259115](D:\git\repositories\chushi\backend\pictures\1534388259115.png)
 
 ## 后端接口
 
@@ -63,3 +63,14 @@ public User getTestUsrById(@PathVariable("usrId") Integer usrId)
 
 说明：根据用户id， 返回usrId所有信息
 
+```
+public int updateUserInfo(User user)
+```
+
+说明：根据用户修改信息，先获取用户id，并根据用户id动态更新用户信息， 更新成功返回1
+
+```
+public String insertOneUser(User user)
+```
+
+说明： 动态生成id，插入新用户， 插入成功返回 success，否则返回 fail
