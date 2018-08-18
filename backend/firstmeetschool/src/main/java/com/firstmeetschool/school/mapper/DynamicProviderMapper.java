@@ -15,6 +15,9 @@ public interface DynamicProviderMapper {
     @SelectProvider(type = UserDynamicSqlProvider.class, method = "findUserByIdSql")
     User findUserById(Integer id);
 
+    @SelectProvider(type = UserDynamicSqlProvider.class, method = "findUserByNameSql")
+    List<User> findUserByNameSql(String usrName);
+
     @SelectProvider(type = UserDynamicSqlProvider.class, method = "findUserInHomePageSql")
     List<User> findUserInHomePage(Map<String, Object> map);
 
@@ -36,6 +39,18 @@ public interface DynamicProviderMapper {
                     SELECT("*");
                     FROM("user");
                     WHERE("usrId="+userId);
+                }
+            }.toString();
+        }
+
+        public String findUserByNameSql(final String usrName){
+            return new SQL(){
+                {
+                    SELECT("*");
+                    FROM("user");
+                    if(StringUtils.isNotBlank(usrName)) {
+                        WHERE("usrName=#{usrName}");
+                    }
                 }
             }.toString();
         }
