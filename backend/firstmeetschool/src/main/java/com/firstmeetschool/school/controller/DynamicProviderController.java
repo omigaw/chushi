@@ -24,7 +24,7 @@ public class DynamicProviderController {
     }
 
 
-    @RequestMapping(value = "/dyn/homepage")
+    @RequestMapping(value = "/dyn/homepage", method = RequestMethod.GET)
     public List<User> getTestUsrInHomepage(String usrSex, String isStudent, String usrEducation){
         User user1 = new User();
         user1.setUsrSex(usrSex);
