@@ -34,12 +34,15 @@ public class DynamicProviderController {
         return results;
     }
 
-    // get usrId first
+
+    //TODO: get usrId first
+
     @RequestMapping(value = "/dyn/update", method = RequestMethod.POST)
     public int updateUserInfo(User user){
         return dynamicProviderService.dynUpdateUser(user);
     }
 
+    
     @RequestMapping(value = "/dyn/insert", method = RequestMethod.POST)
     public String insertOneUser(User user){
         if(dynamicProviderService.insertNewUser(user) == 1){
