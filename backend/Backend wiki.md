@@ -86,4 +86,9 @@ public String insertOneUser(User user)
 
 说明： 动态生成id，插入新用户， 插入成功返回 success，否则返回 fail
 
+```
+public  String login(@PathVariable("code") String code, @PathVariable("state") String state)
+```
+说明：登录接口，根据用户code，以及状态state，生成token，进行用户身份认证。
+
 
