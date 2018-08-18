@@ -17,4 +17,16 @@ spring:
   jpa:
     show-sql: true
 
+  redis:
+    hostName: 10.80.95.143
+    port: 6379
+    password:
+    database: 2
+    timeout: 0
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+
 

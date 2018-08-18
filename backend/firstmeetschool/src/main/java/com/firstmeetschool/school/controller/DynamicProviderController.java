@@ -42,7 +42,7 @@ public class DynamicProviderController {
         return dynamicProviderService.dynUpdateUser(user);
     }
 
-    
+
     @RequestMapping(value = "/dyn/insert", method = RequestMethod.POST)
     public String insertOneUser(User user){
         if(dynamicProviderService.insertNewUser(user) == 1){
