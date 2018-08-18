@@ -6,6 +6,7 @@
 
 #### mysql建表语句
 
+#####　user
 CREATE TABLE `user` (
   `usrId` int(11) NOT NULL AUTO_INCREMENT,
   `usrWechat` varchar(45) NOT NULL,
@@ -34,6 +35,16 @@ CREATE TABLE `user` (
   UNIQUE KEY `usrWechat_UNIQUE` (`usrWechat`),
   UNIQUE KEY `usrTelephone_UNIQUE` (`usrTelephone`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+
+#####　openid
+CREATE TABLE `openid` (
+  `keyId` int(11) NOT NULL AUTO_INCREMENT,
+  `openid` varchar(45) NOT NULL,
+  PRIMARY KEY (`keyId`),
+  UNIQUE KEY `keyId` (`keyId`),
+  UNIQUE KEY `openid` (`openid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 #### 字段说明
 
