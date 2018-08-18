@@ -54,6 +54,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.0</version>
@@ -93,8 +98,6 @@
             <classifier>jdk15</classifier>
         </dependency>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         <!--shiro 依赖-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -116,10 +119,6 @@
             <version>6.0</version>
         </dependency>
 
-=======
->>>>>>> aa5fb5e37bf92a1302e24e435977e85678de3d3c
-=======
->>>>>>> aa5fb5e37bf92a1302e24e435977e85678de3d3c
     </dependencies>
 
     <build>
