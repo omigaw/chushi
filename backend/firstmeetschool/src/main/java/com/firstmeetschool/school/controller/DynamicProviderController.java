@@ -24,6 +24,12 @@ public class DynamicProviderController {
     }
 
 
+    @RequestMapping(value = "/dyn/samename", method = RequestMethod.GET)
+    public List<User> getTestSameUsrByName(String usrName){
+        return dynamicProviderService.findUserByNameSql(usrName);
+    }
+
+
     @RequestMapping(value = "/dyn/homepage", method = RequestMethod.GET)
     public List<User> getTestUsrInHomepage(String usrSex, String isStudent, String usrEducation){
         User user1 = new User();
