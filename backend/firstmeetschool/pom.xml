@@ -98,8 +98,6 @@
             <classifier>jdk15</classifier>
         </dependency>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         <!--shiro 依赖-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -121,10 +119,6 @@
             <version>6.0</version>
         </dependency>
 
-=======
->>>>>>> aa5fb5e37bf92a1302e24e435977e85678de3d3c
-=======
->>>>>>> aa5fb5e37bf92a1302e24e435977e85678de3d3c
     </dependencies>
 
     <build>
