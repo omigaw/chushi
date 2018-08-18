@@ -17,7 +17,7 @@ public class LoginController {
     "https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code"
     */
     @RequestMapping("/login_code/{code}/{state}")
-    public  String login(@PathVariable("code") String code, @PathVariable("state") String state){
+    public  String login(@PathVariable("code") String code, @PathVariable("state") int state){
 
         String result=loginService.logincode(code,state);
 

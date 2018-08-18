@@ -1,5 +1,6 @@
 package com.firstmeetschool.school.service;
 
+import com.firstmeetschool.school.entity.OpenId;
 import com.firstmeetschool.school.mapper.OpenIdMapper;
 import com.firstmeetschool.school.shiro.MyRealm;
 import com.github.kevinsawicki.http.HttpRequest;
@@ -20,7 +21,7 @@ public class LoginService {
     @Autowired(required = false)
     private OpenIdMapper openIdMapper;
 
-    public String logincode(String code ,String state){
+    public String logincode(String code ,int state){
 
         String url ="https://api.weixin.qq.com/sns/jscode2session";
         String appid = "wx8a48e7acde322db1";
@@ -34,7 +35,7 @@ public class LoginService {
         System.out.println(request.toString());
         System.out.println(request.body());
 
-        String openid ="";
+        String openid ="13";
 
         /**
          * openid-数据库
@@ -43,12 +44,15 @@ public class LoginService {
          * 3.没有的话，状态码为1，表示用户授权，将openid存入数据库，并做token认证，
          *   状态码为0，表示用户未授权，不做token认证。
          */
-        int returnCode = openIdMapper.find(openid);
-        if(returnCode==0||state=="0"){
+
+        /*System.out.println(openIdMapper.find(openid));
+        System.out.println(state==0);*/
+        if(openIdMapper.find(openid)==null&&state==0){
             return "new";
 
-        }else if(returnCode==0||state=="1"){
-            openIdMapper.insert(openid);
+        }else if(openIdMapper.find(openid)==null&&state==1){
+            int result=openIdMapper.insert(openid);
+            /*System.out.println(result);*/
         }
 
         //自定义realm
