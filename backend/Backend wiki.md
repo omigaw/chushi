@@ -37,7 +37,7 @@ CREATE TABLE `user` (
 
 #### 字段说明
 
-![1534388259115](.\pictures\1534388259115.png)
+![1534388259115](D:\git\repositories\chushi\backend\pictures\1534388259115.png)
 
 ## 后端接口
 
