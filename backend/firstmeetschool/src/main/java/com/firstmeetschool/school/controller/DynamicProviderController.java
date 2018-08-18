@@ -39,6 +39,7 @@ public class DynamicProviderController {
 
     @RequestMapping(value = "/dyn/update", method = RequestMethod.POST)
     public int updateUserInfo(User user){
+        System.out.println(user.getHomeTown());
         return dynamicProviderService.dynUpdateUser(user);
     }
 
