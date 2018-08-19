@@ -44,7 +44,9 @@ public class LoginService {
          * 3.没有的话，状态码为1，表示用户授权，将openid存入数据库，并做token认证，
          *   状态码为0，表示用户未授权，不做token认证。
          */
-
+        /*
+           提交git测试
+         */
         /*System.out.println(openIdMapper.find(openid));
         System.out.println(state==0);*/
         if(openIdMapper.find(openid)==null&&state==0){
