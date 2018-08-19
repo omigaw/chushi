@@ -83,7 +83,6 @@ public class LoginService {
         /*if(subject.hasRole("user")){
             return "有admin权限";
         }*/
-
         return "old";
 
     }
