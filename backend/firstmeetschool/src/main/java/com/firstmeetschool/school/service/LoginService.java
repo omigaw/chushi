@@ -1,5 +1,7 @@
 package com.firstmeetschool.school.service;
 
+import com.firstmeetschool.school.entity.OpenId;
+import com.firstmeetschool.school.mapper.OpenIdMapper;
 import com.firstmeetschool.school.shiro.MyRealm;
 import com.github.kevinsawicki.http.HttpRequest;
 import org.apache.shiro.SecurityUtils;
@@ -8,13 +10,18 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class LoginService {
 
-    public String logincode(String code ,String state){
+
+    @Autowired(required = false)
+    private OpenIdMapper openIdMapper;
+
+    public String logincode(String code ,int state){
 
         String url ="https://api.weixin.qq.com/sns/jscode2session";
         String appid = "wx8a48e7acde322db1";
@@ -28,6 +35,8 @@ public class LoginService {
         System.out.println(request.toString());
         System.out.println(request.body());
 
+        String openid ="13";
+
         /**
          * openid-数据库
          * 1.查询数据库有没有此openid
@@ -35,6 +44,18 @@ public class LoginService {
          * 3.没有的话，状态码为1，表示用户授权，将openid存入数据库，并做token认证，
          *   状态码为0，表示用户未授权，不做token认证。
          */
+        /*
+           提交git测试
+         */
+        /*System.out.println(openIdMapper.find(openid));
+        System.out.println(state==0);*/
+        if(openIdMapper.find(openid)==null&&state==0){
+            return "new";
+
+        }else if(openIdMapper.find(openid)==null&&state==1){
+            int result=openIdMapper.insert(openid);
+            /*System.out.println(result);*/
+        }
 
         //自定义realm
         MyRealm myRealm= new MyRealm();
@@ -59,11 +80,12 @@ public class LoginService {
         System.out.println("是否认证:"+subject.isAuthenticated());
 
 
-        if(subject.hasRole("user")){
+        /*if(subject.hasRole("user")){
             return "有admin权限";
-        }
+        }*/
+        return "old";
 
-        return "无admin权限";
+
 
     }
 }

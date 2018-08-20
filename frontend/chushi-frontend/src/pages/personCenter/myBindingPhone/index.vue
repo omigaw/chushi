@@ -1,0 +1,25 @@
+<template>
+    <div class="container">
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+                <view class="weui-label">手机号</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入手机号" />
+            </view>
+            <view class="weui-cell__ft">
+                <view class="weui-vcode-btn">获取验证码</view>
+            </view>
+        </view>
+    </div>
+</template>
+
+<script>
+	export default {
+		name: 'index'
+	}
+</script>
+
+<style scoped>
+
+</style>
