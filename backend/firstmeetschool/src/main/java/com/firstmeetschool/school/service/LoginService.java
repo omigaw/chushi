@@ -1,17 +1,28 @@
 package com.firstmeetschool.school.service;
 
-import com.firstmeetschool.school.entity.OpenId;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.firstmeetschool.school.mapper.OpenIdMapper;
 import com.firstmeetschool.school.shiro.MyRealm;
 import com.github.kevinsawicki.http.HttpRequest;
+
+
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
+
+
+
+import java.util.Map;
 
 
 @Service
@@ -34,9 +45,21 @@ public class LoginService {
         request.trustAllCerts();
         request.trustAllHosts();
         System.out.println(request.toString());
-        System.out.println(request.body());
 
-        String openid ="13";
+        Map map = JSON.parseObject(request.body());//  json转map
+       /* for(Object ma:map.keySet()){
+            System.out.println(ma);
+        }*/
+
+
+        if(map.get("openid")==null) {
+            return (String) map.get("errmsg");
+        }
+
+        String openid = (String)map.get("openid");
+
+        /*System.out.println(map);*/
+        System.out.println(openid);
 
         /**
          * openid-数据库
@@ -48,7 +71,7 @@ public class LoginService {
         /*
            提交git测试
          */
-        /*System.out.println(openIdMapper.find(openid));
+      /*  System.out.println(openIdMapper.find(openid));
         System.out.println(state==0);*/
         if(openIdMapper.find(openid)==null&&state==0){
             return "new";

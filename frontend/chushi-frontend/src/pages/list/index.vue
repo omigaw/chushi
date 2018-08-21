@@ -212,10 +212,11 @@ export default {
                     if (res.code) {
                         //发起网络请求
                         wx.request({
-                            url: `http://123.206.43.128:8080/chance/onlogin/${res.code}`,
-                            /*data: {
-                                code: res.code
-                            },*/
+                            url: `http://localhost:8081/chance/login_code`,
+                            data: {
+                                code: res.code,
+                                state: 0
+                            },
                             success: function (data) {
                                 console.log('qingqiu', data);
                                 // 将用户唯一性数据存起来
