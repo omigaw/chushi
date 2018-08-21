@@ -2,9 +2,7 @@ package com.firstmeetschool.school.controller;
 
 import com.firstmeetschool.school.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class LoginController {
@@ -19,12 +17,22 @@ public class LoginController {
     /*接口url
     "https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code"
     */
-    @RequestMapping("/login_code/{code}/{state}")
+    /*@RequestMapping("/login_code/{code}/{state}")
     public  String login(@PathVariable("code") String code, @PathVariable("state") int state){
 
         String result=loginService.logincode(code,state);
 
         return result;
 
+    }*/
+
+    @RequestMapping(value = "/login_code",produces = "application/json")
+    public  String login(String code,int state){
+        System.out.println(code);
+        String result=loginService.logincode(code,state);
+
+        return result;
+
     }
+
 }

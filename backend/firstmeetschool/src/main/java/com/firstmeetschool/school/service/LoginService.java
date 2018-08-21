@@ -35,7 +35,7 @@ public class LoginService {
         System.out.println(request.toString());
         System.out.println(request.body());
 
-        String openid ="13";
+        String openid ="14";
 
         /**
          * openid-数据库
@@ -47,8 +47,8 @@ public class LoginService {
         /*
            提交git测试
          */
-        /*System.out.println(openIdMapper.find(openid));
-        System.out.println(state==0);*/
+        System.out.println(openIdMapper.find(openid));
+        System.out.println(state==0);
         if(openIdMapper.find(openid)==null&&state==0){
             return "new";
 
