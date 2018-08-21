@@ -11,9 +11,7 @@ public class LoginController {
     private LoginService loginService;
 
 
-    /*git不会用
 
-     */
     /*接口url
     "https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code"
     */
@@ -26,6 +24,12 @@ public class LoginController {
 
     }*/
 
+    /**
+     * url请求路径为chance/login_code?code=xxxxxxxx&state=xxxxxxxx
+     * @param code
+     * @param state
+     * @return
+     */
     @RequestMapping(value = "/login_code",produces = "application/json")
     public  String login(String code,int state){
         System.out.println(code);
