@@ -23,6 +23,7 @@ public class LoginService {
 
     public String logincode(String code ,int state){
 
+
         String url ="https://api.weixin.qq.com/sns/jscode2session";
         String appid = "wx8a48e7acde322db1";
         String secret = "d1e571bb902ce5552ef9d499f01a94dd";
