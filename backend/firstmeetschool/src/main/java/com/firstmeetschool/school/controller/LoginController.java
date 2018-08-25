@@ -1,5 +1,6 @@
 package com.firstmeetschool.school.controller;
 
+import com.firstmeetschool.school.entity.Result;
 import com.firstmeetschool.school.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,9 +32,10 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/login_code",produces = "application/json")
-    public  String login(String code,int state){
-        System.out.println(code);
-        String result=loginService.logincode(code,state);
+    public  Result login(String code,int state){
+
+        System.out.println("js_code:"+code);
+        Result result=loginService.logincode(code,state);
 
         return result;
 

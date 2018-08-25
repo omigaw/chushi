@@ -3,6 +3,7 @@ package com.firstmeetschool.school.controller;
 import com.firstmeetschool.school.entity.User;
 import com.firstmeetschool.school.service.InsertService;
 import com.firstmeetschool.school.utils.CollectUserInfo;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,6 +42,8 @@ public class InsertController {
     @RequestParam("usrEducation") String usrEducation, @RequestParam("isStudent") String isStudent){
         int t = insertService.insertUserInfo(usrWechat, usrName, usrTelephone, usrHeight, usrAge,
                                              homeTown, currentCity, usrSex, usrEducation, isStudent);
+        String openid = (String)SecurityUtils.getSubject().getPrincipal();
+        System.out.println(openid);
         if(1==t){
             return "success";
         }else{

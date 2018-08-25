@@ -3,8 +3,10 @@ package com.firstmeetschool.school.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.firstmeetschool.school.entity.Result;
 import com.firstmeetschool.school.mapper.OpenIdMapper;
 import com.firstmeetschool.school.shiro.MyRealm;
+import com.firstmeetschool.school.utils.ResultUtils;
 import com.github.kevinsawicki.http.HttpRequest;
 
 
@@ -32,7 +34,7 @@ public class LoginService {
     @Autowired(required = false)
     private OpenIdMapper openIdMapper;
 
-    public String logincode(String code ,int state){
+    public Result logincode(String code ,int state){
 
 
         String url ="https://api.weixin.qq.com/sns/jscode2session";
@@ -53,13 +55,15 @@ public class LoginService {
 
 
         if(map.get("openid")==null) {
-            return (String) map.get("errmsg");
-        }
 
+            return ResultUtils.error(201,(String) map.get("errmsg"));
+
+        }
         String openid = (String)map.get("openid");
 
         /*System.out.println(map);*/
-        System.out.println(openid);
+
+        System.out.println("openid:"+openid);
 
         /**
          * openid-数据库
@@ -74,7 +78,7 @@ public class LoginService {
       /*  System.out.println(openIdMapper.find(openid));
         System.out.println(state==0);*/
         if(openIdMapper.find(openid)==null&&state==0){
-            return "new";
+            return ResultUtils.success(200,"new");
 
         }else if(openIdMapper.find(openid)==null&&state==1){
             int result=openIdMapper.insert(openid);
@@ -92,13 +96,14 @@ public class LoginService {
         SecurityUtils.setSecurityManager(defaultSecurityManager);
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
-        System.out.println(session.getId());
+        System.out.println("sessionId:"+session.getId());
 
-        UsernamePasswordToken token = new UsernamePasswordToken("openid","123456");
+
+        UsernamePasswordToken token = new UsernamePasswordToken(openid,"123456");//用户名密码都为openid
         try {
             subject.login(token);
         }catch (AuthenticationException e){
-            return e.getMessage();
+            return ResultUtils.error(202,e.getMessage());
         }
 
         System.out.println("是否认证:"+subject.isAuthenticated());
@@ -107,7 +112,7 @@ public class LoginService {
         /*if(subject.hasRole("user")){
             return "有admin权限";
         }*/
-        return "old";
+        return ResultUtils.success(200,"old");
 
 
 
