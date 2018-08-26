@@ -1,7 +1,9 @@
 package com.firstmeetschool.school.controller;
 
+import com.firstmeetschool.school.entity.Result;
 import com.firstmeetschool.school.entity.User;
 import com.firstmeetschool.school.service.DynamicProviderService;
+import com.firstmeetschool.school.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,46 +18,47 @@ public class DynamicProviderController {
     @Autowired(required = false)
     DynamicProviderService dynamicProviderService;
 
-    @RequestMapping(value = "/dyn/{usrId}", method = RequestMethod.GET)
-    public User getTestUsrById(@PathVariable("usrId") Integer usrId){
+    @RequestMapping(value = "/dyn/findbyid",produces = "application/json")
+    public Result getTestUsrById(Integer usrId){
 
         User res =  dynamicProviderService.findUserById(usrId);
-        return res;
+        return ResultUtils.success(200,res);
     }
 
 
-    @RequestMapping(value = "/dyn/samename", method = RequestMethod.GET)
-    public List<User> getTestSameUsrByName(String usrName){
-        return dynamicProviderService.findUserByNameSql(usrName);
+    @RequestMapping(value = "/dyn/findbyname", method = RequestMethod.GET)
+    public Result<List<User>> getTestSameUsrByName(String usrName){
+        System.out.println(usrName);
+        return ResultUtils.success(200,dynamicProviderService.findUserByNameSql(usrName));
     }
 
 
     @RequestMapping(value = "/dyn/homepage", method = RequestMethod.GET)
-    public List<User> getTestUsrInHomepage(String usrSex, String isStudent, String usrEducation){
+    public Result<List<User>> getTestUsrInHomepage(String usrSex, String isStudent, String usrEducation){
         User user1 = new User();
         user1.setUsrSex(usrSex);
         user1.setIsStudent(isStudent);
         user1.setUsrEducation(usrEducation);
         List<User> results = dynamicProviderService.findUserInHomePage(user1);
-        return results;
+        return ResultUtils.success(200,results);
     }
 
 
     //TODO: get usrId first
 
     @RequestMapping(value = "/dyn/update", method = RequestMethod.POST)
-    public int updateUserInfo(User user){
-        System.out.println(user.getHomeTown());
-        return dynamicProviderService.dynUpdateUser(user);
+    public Result updateUserInfo(User user){
+        System.out.println(user);
+        return ResultUtils.success(200,dynamicProviderService.dynUpdateUser(user));
     }
 
 
     @RequestMapping(value = "/dyn/insert", method = RequestMethod.POST)
-    public String insertOneUser(User user){
+    public Result insertOneUser(User user){
         if(dynamicProviderService.insertNewUser(user) == 1){
-            return "success";
+            return ResultUtils.success(200,"1");
         }else{
-            return "fail";
+            return  ResultUtils.success(200,"0");
         }
     }
 }

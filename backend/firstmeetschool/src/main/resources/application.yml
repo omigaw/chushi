@@ -36,4 +36,8 @@ spring:
 #      min-idle: 0
 
 
-
+server:
+  ssl:
+    key-store: classpath:214943999880779.pfx
+    key-store-password: 214943999880779
+    key-store-type: PKCS12

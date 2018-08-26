@@ -19,7 +19,9 @@
 <body>
     <h2 align="center">欢迎登录</h2>
 
-    <form name="loginForm" action="http://localhost:8081/chance/login/verify" method="post">
+    <!--<%=basePath%>-->
+     <%--https://localhost:443/chance/--%>
+    <form name="loginForm" action="login/verify" method="post">
         <table align="center">
             <tr>
                 <td>用户名:</td><td><input type="text" name="userName" /></td>
