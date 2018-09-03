@@ -17,10 +17,10 @@ public class QiNiuToken {
 
     @ResponseBody
     @RequestMapping(value = "/qiniutoken")
-    public Object getQiniuUptoken(String usrId,String key) throws Exception{
+    public Object getQiniuUptoken() throws Exception{
         Map<String,Object> data = new HashMap<String, Object>();
         Auth auth = Auth.create(ak,sk);
-        String uptoken = auth.uploadToken(usrId,key);// 使用的空间为每个用户的id
+        String uptoken = auth.uploadToken("images");// 使用的空间为每个用户的id
         data.put("uptoken",uptoken);
         return data;
 
