@@ -6,7 +6,7 @@
     <groupId>com.firstmeetschool</groupId>
     <artifactId>school</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>school</name>
     <description>Demo project for Spring Boot</description>
