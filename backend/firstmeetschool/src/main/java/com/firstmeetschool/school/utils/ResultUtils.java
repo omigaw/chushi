@@ -13,7 +13,7 @@ public class ResultUtils {
     }
 
 
-    public static Result error(Integer statusCode,String msg){
+    public static Result error(Integer statusCode,Object msg){
         Result result = new Result();
         result.setStatusCode(statusCode);
         result.setData(msg);

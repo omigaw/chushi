@@ -26,16 +26,16 @@ public class LoginController {
     }*/
 
     /**
-     * url请求路径为chance/login_code?code=xxxxxxxx&state=xxxxxxxx
+     * url请求路径为chance/login_code?code=xxxxxxxx
      * @param code
-     * @param state
+
      * @return
      */
     @RequestMapping(value = "/login_code",produces = "application/json")
-    public  Result login(String code,int state){
+    public  Result login(String code){
 
         System.out.println("js_code:"+code);
-        Result result=loginService.logincode(code,state);
+        Result result=loginService.logincode(code);
 
         return result;
 

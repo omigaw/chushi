@@ -18,6 +18,11 @@ public class SelectService {
         return user;
     }
 
+    public User getUserByopenid(String openid){
+        User user = this.selectMapper.findUserByopenid(openid);
+        return user;
+    }
+
     public List<User> getAllUsersInfo(){
         List<User> users = this.selectMapper.findAllUsersList();
         return users;

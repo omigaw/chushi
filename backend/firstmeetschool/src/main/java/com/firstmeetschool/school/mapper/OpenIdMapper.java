@@ -11,9 +11,9 @@ import org.apache.ibatis.annotations.Select;
 public interface OpenIdMapper {
 
 
-    @Insert("INSERT INTO openid(openid)"+"VALUES(#{openid})")
-    int insert(@Param("openid") String openid);
+    @Insert("INSERT INTO authority(openid,checkReg)"+"VALUES(#{openid},#{checkReg})")
+    int insert(@Param("openid") String openid, @Param("checkReg") int checkReg);
 
-    @Select("SELECT * FROM openid WHERE openid = #{openid}")
+    @Select("SELECT * FROM authority WHERE openid = #{openid}")
     OpenId find(@Param("openid") String openid);
 }
