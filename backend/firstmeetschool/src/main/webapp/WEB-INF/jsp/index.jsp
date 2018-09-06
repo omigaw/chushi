@@ -19,91 +19,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <link href="jquery-ui-themes.css" type="text/css" rel="stylesheet" />
-    <link href="axure_rp_page.css" type="text/css" rel="stylesheet" />
-    <link href="styles.css" type="text/css" rel="stylesheet" />
-    <link href="authentication/styles.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+
+        
+        ul{
+            list-style: none;
+            position: fixed;
+            width: 100%;
+
+        }
+        .nav>li{
+            float: left;
+        }
+        ul a{
+            display: block;
+            text-decoration: none;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            background-color: #2f3e45;
+        }
+        .nav>li:first-child a{
+            border-radius: 0px;
+        }
+        .nav>li:last-child a{
+            border-radius: 0px;
+        }
+        .drop-down{
+            /*position: relative;*/
+        }
+        .drop-down-content{
+            padding: 0;
+            display: none;
+            /*position: absolute;*/
+        }
+
+
+        .drop-down-content li:hover a{
+            background-color:red;
+        }
+        .nav .drop-down:hover .drop-down-content{
+            display: block;
+        }
+    </style>
 </head>
 <body>
 <h2 align="center">欢迎登录</h2>
-<!-- Unnamed (矩形) -->
-<div id="u36" class="ax_default shape">
-    <div id="u36_div" class=""></div>
+<div id="a" >
+    <div >
+        <img src="http://pic.58pic.com/58pic/13/19/70/59H58PIC743_1024.jpg" style="width: 100%;height: 200px">
+    </div>
+
+<ul class="nav" >
+
+    <li class="drop-down" ><a href="#">初识爱情信息</a>
+        <ul class="drop-down-content">
+            <li><a href="认证信息审核">认证信息审核</a></li>
+            <li><a href="举报信息查看">举报信息查看</a></li>
+        </ul>
+    </li >
+    <li class="drop-down" style="padding-left: 100px"><a href="#">丘比特之箭</a>
+        <ul class="drop-down-content">
+            <li><a href="qbt">丘比特</a></li>
+            <li><a href="">箭</a></li>
+        </ul>
+    </li>
+
+</ul>
 </div>
 
-<!-- Unnamed (组合) -->
-<div id="u37" class="ax_default" data-left="122" data-top="-73" data-width="1152" data-height="904">
-
-    <!-- Unnamed (矩形) -->
-    <div id="u38" class="ax_default shape">
-        <div id="u38_div" class=""></div>
-    </div>
-
-    <!-- Unnamed (动态面板) -->
-    <div id="u39" class="ax_default">
-        <div id="u39_state0" class="panel_state" data-label="State1" style="">
-            <div id="u39_state0_content" class="panel_state_content">
-            </div>
-        </div>
-    </div>
-
-    <!-- Unnamed (动态面板) -->
-    <div id="u40" class="ax_default">
-        <div id="u40_state0" class="panel_state" data-label="State1" style="">
-            <div id="u40_state0_content" class="panel_state_content">
-            </div>
-        </div>
-    </div>
-
-    <!-- Unnamed (动态面板) -->
-    <div id="u41" class="ax_default">
-        <div id="u41_state0" class="panel_state" data-label="State1" style="">
-            <div id="u41_state0_content" class="panel_state_content">
-            </div>
-        </div>
-    </div>
-
-    <!-- Unnamed (动态面板) -->
-    <div id="u42" class="ax_default">
-        <div id="u42_state0" class="panel_state" data-label="State1" style="">
-            <div id="u42_state0_content" class="panel_state_content">
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Unnamed (组合) -->
-<div id="u43" class="ax_default" data-left="10" data-top="141" data-width="1440" data-height="162">
-
-    <!-- Unnamed (组合) -->
-    <div id="u44" class="ax_default" data-left="10" data-top="141" data-width="1440" data-height="64">
-
-        <!-- Unnamed (矩形) -->
-        <div id="u45" class="ax_default shape">
-            <div id="u45_div" class=""></div>
-        </div>
-
-        <!-- Unnamed (组合) -->
-        <div id="u46" class="ax_default" data-left="318" data-top="141" data-width="322" data-height="64">
-
-            <!-- Unnamed (矩形) -->
-            <div id="u47" class="ax_default shape">
-                <div id="u47_div" class=""></div>
-                <div id="u47_text" class="text ">
-                    <p><span>初识爱情信息</span></p>
-                </div>
-            </div>
-
-            <!-- Unnamed (矩形) -->
-            <div id="u48" class="ax_default shape">
-                <div id="u48_div" class=""></div>
-                <div id="u48_text" class="text ">
-                    <p><span>丘比特之箭</span></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 
 </html>

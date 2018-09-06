@@ -212,10 +212,9 @@ export default {
                     if (res.code) {
                         //发起网络请求
                         wx.request({
-                            url: `http://localhost:8081/chance/login_code`,
+                            url: `https://localhost:442/chance/login_code`,
                             data: {
                                 code: res.code,
-                                state: 0
                             },
                             success: function (data) {
                                 console.log('qingqiu', data);

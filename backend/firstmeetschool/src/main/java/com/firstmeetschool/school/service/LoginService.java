@@ -23,7 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -34,8 +34,13 @@ public class LoginService {
     @Autowired(required = false)
     private OpenIdMapper openIdMapper;
 
-    public Result logincode(String code ,int state){
 
+    @Autowired(required = false)
+    private SelectService selectService;
+
+    public Result logincode(String code ){
+
+        Map<String,Object> hashMap = new HashMap<String, Object>();
 
         String url ="https://api.weixin.qq.com/sns/jscode2session";
         String appid = "wx8a48e7acde322db1";
@@ -56,7 +61,7 @@ public class LoginService {
 
         if(map.get("openid")==null) {
 
-            return ResultUtils.error(201,(String) map.get("errmsg"));
+            return ResultUtils.error(201, map);
 
         }
         String openid = (String)map.get("openid");
@@ -77,12 +82,23 @@ public class LoginService {
          */
       /*  System.out.println(openIdMapper.find(openid));
         System.out.println(state==0);*/
-        if(openIdMapper.find(openid)==null&&state==0){
-            return ResultUtils.success(200,"new");
+        if(openIdMapper.find(openid)==null){
+            int result = openIdMapper.insert(openid,0);
 
-        }else if(openIdMapper.find(openid)==null&&state==1){
-            int result=openIdMapper.insert(openid);
-            /*System.out.println(result);*/
+
+
+            hashMap.put("object","unregister");
+            hashMap.put("openid",openid);
+            hashMap.put("usrId"," ");
+            return ResultUtils.success(200,hashMap);
+
+        }else if(openIdMapper.find(openid).getCheckReg()==0){
+
+
+            hashMap.put("object","unregister");
+            hashMap.put("openid",openid);
+            hashMap.put("usrId"," ");
+            return ResultUtils.success(200,hashMap);
         }
 
         //自定义realm
@@ -108,11 +124,16 @@ public class LoginService {
 
         System.out.println("是否认证:"+subject.isAuthenticated());
 
+        Integer id = selectService.getUserByopenid(openid).getUsrId();
+        hashMap.put("object","register");
+        hashMap.put("openid",openid);
+        hashMap.put("usrId",id);
+
 
         /*if(subject.hasRole("user")){
             return "有admin权限";
         }*/
-        return ResultUtils.success(200,"old");
+        return ResultUtils.success(200,hashMap);
 
 
 

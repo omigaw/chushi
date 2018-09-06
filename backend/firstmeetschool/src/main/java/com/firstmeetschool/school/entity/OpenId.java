@@ -6,6 +6,16 @@ public class OpenId {
 
     private String openid;
 
+    private Integer checkReg;
+
+    public Integer getCheckReg() {
+        return checkReg;
+    }
+
+    public void setCheckReg(Integer checkReg) {
+        this.checkReg = checkReg;
+    }
+
     public Integer getKeyId() {
         return keyId;
     }

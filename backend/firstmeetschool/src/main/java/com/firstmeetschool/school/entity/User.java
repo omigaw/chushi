@@ -69,6 +69,15 @@ public class User {
     // 点赞数
     private Integer calloutNum;
 
+    private String openid;
+
+    public String getOpenid() {
+        return openid;
+    }
+
+    public void setOpenid(String openid) {
+        this.openid = openid;
+    }
 
     public void setUsrId(Integer usrId){ this.usrId = usrId;}
 
