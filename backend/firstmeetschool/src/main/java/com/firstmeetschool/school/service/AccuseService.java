@@ -11,10 +11,17 @@ public class AccuseService {
     @Autowired(required = false)
     private AccuseMapper accuseMapper;
 
-    public int saveAccuseInfo(Accuse accuse){
-       int a= accuseMapper.insert(accuse.getId(),accuse.getType()
+    public int saveAccuseInfo(Accuse accuse) {
+
+
+        try{
+           int a= accuseMapper.insert(accuse.getId(),accuse.getType()
                 ,accuse.getContent(),accuse.getReporterId());
-       return a;
+           return a;
+        }catch (Exception e){
+
+            return 2;
+        }
 
     }
 }

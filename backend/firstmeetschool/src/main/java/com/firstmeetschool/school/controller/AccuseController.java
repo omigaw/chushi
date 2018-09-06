@@ -26,6 +26,7 @@ public class AccuseController {
         if(result==1) {
             return ResultUtils.success(200, "举报成功");
         }
-        return ResultUtils.success(200, "举报失败");
+
+        return ResultUtils.success(201, "举报失败");
     }
 }
