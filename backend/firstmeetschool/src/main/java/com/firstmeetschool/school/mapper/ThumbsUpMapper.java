@@ -12,12 +12,9 @@ import java.util.List;
 public interface ThumbsUpMapper {
 
 
-    @Insert("INSERT INTO thumbsup(thumbsedid,nickname,sex,birthdate,height,education,headpicture,thumbsid,thumbsTime)"
-            +"VALUES(#{thumbsedid},#{nickname},#{sex},#{birthdate},#{height},#{education},#{headpicture},#{thumbsid},#{thumbsTime})")
-    int insert(@Param("thumbsedid") int thumbsedid, @Param("nickname") String nickname,
-               @Param("sex") String sex, @Param("birthdate") String birthdate,
-               @Param("height") String height,@Param("education") String education,
-               @Param("headpicture") String headpicture,@Param("thumbsid") int thumbsid,
+    @Insert("INSERT INTO thumbsup(thumbsedid,thumbsid,thumbsTime)"
+            +"VALUES(#{thumbsedid},#{thumbsid},#{thumbsTime})")
+    int insert(@Param("thumbsedid") int thumbsedid, @Param("thumbsid") int thumbsid,
                @Param("thumbsTime") Long thumbsTime);
 
     @Select("select * from thumbsup where thumbsedid = #{thumbsedid}")

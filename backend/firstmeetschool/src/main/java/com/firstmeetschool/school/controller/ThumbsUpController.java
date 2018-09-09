@@ -27,7 +27,6 @@ public class ThumbsUpController {
     @RequestMapping(value="/mythumbsup",method = RequestMethod.GET)
     public Result myThumbsUp(int id){
         Result result=thumbsUpService.searchThumbsObject(id);
-
         return result;
     }
 

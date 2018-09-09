@@ -2,6 +2,8 @@ package com.firstmeetschool.school.service;
 
 import com.firstmeetschool.school.entity.Result;
 import com.firstmeetschool.school.entity.ThumbsUp;
+import com.firstmeetschool.school.entity.User;
+import com.firstmeetschool.school.mapper.SelectMapper;
 import com.firstmeetschool.school.mapper.ThumbsUpMapper;
 import com.firstmeetschool.school.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +17,17 @@ public class ThumbsUpService {
     @Autowired(required = false)
     private ThumbsUpMapper thumbsUpMapper;
 
+    @Autowired(required = false)
+    private SelectMapper selectMapper;
+
 
 
     public Result saveThumbsRecord(ThumbsUp thumbsUp){
 
         Date date = new Date();
 
-
         try {
-            int result = thumbsUpMapper.insert(thumbsUp.getThumbsedid(), thumbsUp.getNickname(),
-                    thumbsUp.getSex(), thumbsUp.getBirthDate(), thumbsUp.getHeight(),
-                    thumbsUp.getEducation(), thumbsUp.getHeadpicture(), thumbsUp.getThumbsId(),
+            int result = thumbsUpMapper.insert(thumbsUp.getThumbsedid(),thumbsUp.getThumbsId(),
                     date.getTime());
             return ResultUtils.success(200,"点赞成功");
         }catch (Exception e){
@@ -47,12 +49,13 @@ public class ThumbsUpService {
         for(ThumbsUp record:whoToMe){
             Map<String,Object> hashMap= new HashMap<String,Object>();
             hashMap.put("date",record.getThumbsTime());
-            hashMap.put("nickname",record.getNickname());
-            hashMap.put("sex",record.getSex());
-            hashMap.put("birthDate",record.getBirthDate());
-            hashMap.put("height",record.getHeight());
-            hashMap.put("headpicture",record.getHeadpicture());
-            hashMap.put("education",record.getEducation());
+            User user=selectMapper.findUserById(record.getThumbsId());
+            hashMap.put("nickname",user.getUsrName());
+            hashMap.put("sex",user.getUsrSex());
+            hashMap.put("birthDate",user.getBirthDay());
+            hashMap.put("height",user.getUsrHeight());
+            hashMap.put("headpicture",user.getUsrPicture());
+            hashMap.put("education",user.getUsrEducation()+user.getIsStudent());
             wTm.add(hashMap);
         }
 
@@ -64,12 +67,13 @@ public class ThumbsUpService {
         for(ThumbsUp record:meToWho){
             Map<String,Object> hashMap= new HashMap<String,Object>();
             hashMap.put("date",record.getThumbsTime());
-            hashMap.put("nickname",record.getNickname());
-            hashMap.put("sex",record.getSex());
-            hashMap.put("birthDate",record.getBirthDate());
-            hashMap.put("height",record.getHeight());
-            hashMap.put("headpicture",record.getHeadpicture());
-            hashMap.put("education",record.getEducation());
+            User user=selectMapper.findUserById(record.getThumbsId());
+            hashMap.put("nickname",user.getUsrName());
+            hashMap.put("sex",user.getUsrSex());
+            hashMap.put("birthDate",user.getBirthDay());
+            hashMap.put("height",user.getUsrHeight());
+            hashMap.put("headpicture",user.getUsrPicture());
+            hashMap.put("education",user.getUsrEducation()+user.getIsStudent());
             mTw.add(hashMap);
         }
 
