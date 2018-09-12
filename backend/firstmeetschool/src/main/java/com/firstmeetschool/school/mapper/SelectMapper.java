@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Mapper
@@ -15,7 +16,10 @@ public interface SelectMapper {
     List<User> findAllUsersList();
 
     @Select("select * from user where usrId = #{usrId}")
-    User findUserById(@Param("usrId") Integer usrId);
+    User findUserById(@Param("usrId") int usrId);
+
+    @Select("select usrName,usrSex,usrPicture from user where usrId = #{usrId}")
+    Map<String,Object> findInviteById(@Param("usrId") int usrId);
 
     @Select("select * from user where openid = #{openid}")
     User findUserByopenid(@Param("openid") String openid);

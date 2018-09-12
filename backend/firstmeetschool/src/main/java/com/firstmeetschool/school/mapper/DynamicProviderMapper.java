@@ -60,7 +60,7 @@ public interface DynamicProviderMapper {
                 {
                     SELECT("*");
                     FROM("user");
-                    WHERE("usrAge >= 20 AND usrAge <=27");
+                    WHERE("usrAge >= #{lowAge} AND usrAge <=#{highAge}");
                     if(StringUtils.isNotBlank((String)map.get("usrSex"))){
                         WHERE("usrSex=#{usrSex}");
                     }
@@ -213,6 +213,9 @@ public interface DynamicProviderMapper {
                     }
                     if(user.getCalloutNum() != null){
                         VALUES("calloutNum", "#{calloutNum}");
+                    }
+                    if(user.getOpenid() != null){
+                        VALUES("openid", "#{openid}");
                     }
 
                 }

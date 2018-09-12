@@ -26,12 +26,9 @@ public class DynamicProviderServiceImpl implements DynamicProviderService {
     }
 
     @Override
-    public List<User> findUserInHomePage(User user){
-        Map<String, Object> maps = new HashMap<>();
-        maps.put("usrSex", user.getUsrSex());
-        maps.put("isStudent", user.getIsStudent());
-        maps.put("usrEducation", user.getUsrEducation());
-        return DynamicProviderMapper.findUserInHomePage(maps);
+    public List<User> findUserInHomePage(Map map){
+
+        return DynamicProviderMapper.findUserInHomePage(map);
     }
 
     @Override

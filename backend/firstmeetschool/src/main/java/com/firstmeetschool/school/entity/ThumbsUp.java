@@ -14,13 +14,6 @@ public class ThumbsUp {
 
     private int thumbsedid;
 
-    public int getThumbsedid() {
-        return thumbsedid;
-    }
-
-    public void setThumbsedid(int thumbsedid) {
-        this.thumbsedid = thumbsedid;
-    }
 
     private int thumbsId;
 
@@ -34,6 +27,13 @@ public class ThumbsUp {
         this.thumbsTime = thumbsTime;
     }
 
+    public int getThumbsedid() {
+        return thumbsedid;
+    }
+
+    public void setThumbsedid(int thumbsedid) {
+        this.thumbsedid = thumbsedid;
+    }
 
     public int getThumbsId() {
         return thumbsId;
@@ -43,3 +43,4 @@ public class ThumbsUp {
         this.thumbsId = thumbsId;
     }
 }
+

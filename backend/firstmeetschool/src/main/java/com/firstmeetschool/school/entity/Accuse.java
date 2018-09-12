@@ -2,13 +2,13 @@ package com.firstmeetschool.school.entity;
 
 public class Accuse {
 
-    private int id;
+    private int id;    //被举报者id
 
     private String content;
 
     private String type;
 
-    private String reporterId;
+    private int reporterId;  //举报者id
 
     public int getId() {
         return id;
@@ -34,11 +34,11 @@ public class Accuse {
         this.type = type;
     }
 
-    public String getReporterId() {
+    public int getReporterId() {
         return reporterId;
     }
 
-    public void setReporterId(String reporterId) {
+    public void setReporterId(int reporterId) {
         this.reporterId = reporterId;
     }
 

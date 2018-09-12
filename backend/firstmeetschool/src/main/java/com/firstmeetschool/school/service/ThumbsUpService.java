@@ -55,7 +55,7 @@ public class ThumbsUpService {
             hashMap.put("birthDate",user.getBirthDay());
             hashMap.put("height",user.getUsrHeight());
             hashMap.put("headpicture",user.getUsrPicture());
-            hashMap.put("education",user.getUsrEducation()+user.getIsStudent());
+            hashMap.put("education",user.getGradUniversity()+user.getUsrEducation()+user.getIsStudent());
             wTm.add(hashMap);
         }
 
@@ -67,13 +67,13 @@ public class ThumbsUpService {
         for(ThumbsUp record:meToWho){
             Map<String,Object> hashMap= new HashMap<String,Object>();
             hashMap.put("date",record.getThumbsTime());
-            User user=selectMapper.findUserById(record.getThumbsId());
+            User user=selectMapper.findUserById(record.getThumbsedid());
             hashMap.put("nickname",user.getUsrName());
             hashMap.put("sex",user.getUsrSex());
             hashMap.put("birthDate",user.getBirthDay());
             hashMap.put("height",user.getUsrHeight());
             hashMap.put("headpicture",user.getUsrPicture());
-            hashMap.put("education",user.getUsrEducation()+user.getIsStudent());
+            hashMap.put("education",user.getGradUniversity()+user.getUsrEducation()+user.getIsStudent());
             mTw.add(hashMap);
         }
 

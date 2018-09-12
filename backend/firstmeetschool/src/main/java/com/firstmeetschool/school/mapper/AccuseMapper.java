@@ -10,6 +10,6 @@ public interface AccuseMapper {
     @Insert("INSERT INTO accuse(reported_id,type,content,reporter_id)"
             +"VALUES(#{reportedId},#{type},#{content},#{reporterId})")
     int insert(@Param("reportedId") int reportedId, @Param("type") String type,
-               @Param("content") String content,@Param("reporterId") String reporterId);
+               @Param("content") String content,@Param("reporterId") int reporterId);
 
 }
