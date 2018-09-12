@@ -1,6 +1,6 @@
 package com.firstmeetschool.school.service;
 
-import com.firstmeetschool.school.entity.User;
+
 import com.firstmeetschool.school.mapper.InsertMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

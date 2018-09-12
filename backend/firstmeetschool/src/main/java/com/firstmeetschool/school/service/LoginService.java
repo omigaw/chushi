@@ -2,7 +2,7 @@ package com.firstmeetschool.school.service;
 
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+
 import com.firstmeetschool.school.entity.Result;
 import com.firstmeetschool.school.mapper.OpenIdMapper;
 import com.firstmeetschool.school.shiro.MyRealm;

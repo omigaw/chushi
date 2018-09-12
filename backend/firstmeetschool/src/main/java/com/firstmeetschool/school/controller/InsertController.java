@@ -1,8 +1,8 @@
 package com.firstmeetschool.school.controller;
 
-import com.firstmeetschool.school.entity.User;
+
 import com.firstmeetschool.school.service.InsertService;
-import com.firstmeetschool.school.utils.CollectUserInfo;
+
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
